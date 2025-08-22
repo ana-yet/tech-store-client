@@ -15,6 +15,7 @@ import {
   FiLogIn,
   FiUser,
 } from "react-icons/fi";
+import Logo from "../logo/Logo";
 
 const Navbar = () => {
   // --- STATE MANAGEMENT ---
@@ -78,13 +79,7 @@ const Navbar = () => {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <Link
-            href="/"
-            className={`flex items-center text-2xl font-bold ${textColorClass}`}
-          >
-            <FiBox className="mr-2" />
-            TechStore
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <div className="hidden items-center space-x-8 md:flex">
