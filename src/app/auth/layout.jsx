@@ -2,6 +2,7 @@
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import Logo from "@/app/components/shared/logo/Logo";
+import GoogleLogin from "./googleLogin/GoogleLogin";
 
 const AuthLayout = ({ children, title }) => {
   // Theme management
@@ -37,6 +38,7 @@ const AuthLayout = ({ children, title }) => {
           </h2>
         </div>
         <div className="mt-8">{children}</div>
+        <GoogleLogin />
       </div>
     </div>
   );
