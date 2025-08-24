@@ -16,6 +16,7 @@ import {
 } from "react-icons/fi";
 import Logo from "../logo/Logo";
 import LoginUser from "./LoginUser";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   // --- STATE MANAGEMENT ---
@@ -23,6 +24,7 @@ const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const path = usePathname();
 
   // useEffect to ensure the component is mounted before rendering theme-dependent UI
   useEffect(() => setMounted(true), []);
@@ -70,6 +72,9 @@ const Navbar = () => {
   // --- RENDER LOGIC ---
   if (!mounted) {
     return <div className="h-20 w-full" />;
+  }
+  if (path.includes("/dashboard")) {
+    return null; // Don't render Navbar on dashboard routes
   }
 
   return (
