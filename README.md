@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Tech Store
+Project Description
+Tech Store is a modern e-commerce web application built with Next.js, designed for browsing, managing, and purchasing tech products. It features user authentication via NextAuth, a dashboard for administrators to add and manage products, product grids for display, and integration with MongoDB for data persistence. The app includes responsive components like navigation bars, footers, and product cards, making it suitable for showcasing tech items such as gadgets and electronics.
+Setup & Installation Instructions
 
-## Getting Started
+Clone the Repository
+Clone the project to your local machine:
+textgit clone <repository-url>
+cd tech-store
 
-First, run the development server:
+Install Dependencies
+Install the required Node.js packages using npm:
+textnpm install
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Configure Environment Variables
+Create a .env.local file in the root directory and add the necessary environment variables. Example:
+textMONGODB_URI=mongodb://<your-mongodb-connection-string>
+NEXTAUTH_SECRET=<your-nextauth-secret>
+NEXTAUTH_URL=http://localhost:3000
+Replace the placeholders with your actual MongoDB connection string and a secure secret key (generate one using openssl rand -base64 32).
+Run the Development Server
+Start the app in development mode:
+textnpm run dev
+The application will be available at http://localhost:3000.
+Build for Production (Optional)
+To build and run in production:
+textnpm run build
+npm start
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Note: Ensure you have Node.js (v18 or higher) and MongoDB set up. The app uses Next.js App Router, so no additional routing libraries are needed.
+Route Summary
+The application uses Next.js App Router for handling pages and API routes. Below is a summary of the main routes:
+Page Routes (Client-Side Pages)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+/: Home page displaying product grids, top products, banners, and navigation (defined in src/app/page.js).
+/dashboard: Admin dashboard overview, likely showing product management options (defined in src/app/dashboard/page.jsx).
+/dashboard/addProduct: Page for adding new products to the store, accessible via the dashboard (defined in src/app/dashboard/addProduct/page.jsx).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+API Routes
 
-## Learn More
+/api/auth/[...nextauth]: Handles authentication flows using NextAuth, including login, logout, and session management (defined in src/app/api/auth/[...nextauth]/route.js).
+/api/post: API endpoint for handling post-related operations (potentially blog or user posts; defined in src/app/api/Post/route.js).
+/api/product: CRUD operations for products (e.g., get all products; defined in src/app/api/product/route.js).
+/api/product/[id]: Dynamic route for specific product operations by ID (e.g., get, update, or delete a product; defined in src/app/api/product/[id]/route.js).
+/api/top: Endpoint for fetching top or featured products (defined in src/app/api/top/route.js).
+/api/users: User management API, such as registration or profile updates (defined in src/app/api/users/route.js).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Additional layouts and components (e.g., Sidebar.jsx, TopNavBar.jsx) are used within these routes for shared UI elements. Custom error handling is provided via not-found.jsx and loading.jsx. For full details, refer to the src/app directory structure.
