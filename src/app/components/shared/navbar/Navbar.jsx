@@ -13,9 +13,9 @@ import {
   FiBox,
   FiPieChart,
   FiLogIn,
-  FiUser,
 } from "react-icons/fi";
 import Logo from "../logo/Logo";
+import LoginUser from "./LoginUser";
 
 const Navbar = () => {
   // --- STATE MANAGEMENT ---
@@ -105,13 +105,7 @@ const Navbar = () => {
 
           {/* Actions: Login, Theme Toggle, and Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            <Link
-              href="/login"
-              className={`hidden items-center rounded-md px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:flex ${buttonBgClass}`}
-            >
-              <FiLogIn className="mr-1.5" size={16} />
-              Login
-            </Link>
+            <LoginUser />
 
             {/* Theme Toggle Button */}
             <motion.button

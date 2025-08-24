@@ -81,9 +81,9 @@ const RegisterForm = () => {
         </button>
       </div>
       <div className="text-center text-sm text-text-secondary">
-        Not a member?
+        Already have an account?
         <Link
-          href="/register"
+          href="/auth/login"
           className={`font-medium hover:underline ${accentTextClass}`}
         >
           Create an account

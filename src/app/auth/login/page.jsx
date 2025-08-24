@@ -84,7 +84,7 @@ const Login = () => {
       <div className="text-center text-sm text-text-secondary">
         Not a member?
         <Link
-          href="/register"
+          href="/auth/register"
           className={`font-medium hover:underline ${accentTextClass}`}
         >
           Create an account
