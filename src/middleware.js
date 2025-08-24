@@ -7,7 +7,7 @@ export default withAuth({
   },
   callbacks: {
     authorized({ token, req }) {
-      console.log("Middleware triggered for:", req.nextUrl.pathname);
+      // console.log("Middleware triggered for:", req.nextUrl.pathname);
       return !!token;
     },
   },
