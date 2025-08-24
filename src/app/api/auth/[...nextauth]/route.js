@@ -14,7 +14,7 @@ export const authOptions = {
     async signIn({ user }) {
       try {
         const client = await clientPromise;
-        const db = client.db("TecthStore");
+        const db = client.db("TechStore");
 
         // Check if user already exists
         const existingUser = await db

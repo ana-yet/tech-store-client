@@ -23,8 +23,13 @@ const RegisterForm = () => {
     ? "focus:ring-offset-background-dark"
     : "focus:ring-offset-background";
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("I will explore later");
+  };
+
   return (
-    <form className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label
           htmlFor="email"

@@ -23,6 +23,12 @@ const Login = () => {
     ? "focus:ring-offset-background-dark"
     : "focus:ring-offset-background";
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    alert("I will explore it later");
+  };
+
   return (
     <form className="space-y-6">
       <div>
