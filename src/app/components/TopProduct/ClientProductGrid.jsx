@@ -4,13 +4,13 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export function ClientProductGrid({ initialProducts, error }) {
+export default function ClientProductGrid({ initialProducts, error }) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
-  const isDark = resolvedTheme === "dark";
+  const isDark = mounted && resolvedTheme === "dark";
 
   const headingColorClass = isDark
     ? "text-text-primary-dark"

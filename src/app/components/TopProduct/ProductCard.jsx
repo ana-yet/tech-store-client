@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
-function ProductCard({ product }) {
+const ProductCard = ({ product }) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -65,4 +65,5 @@ function ProductCard({ product }) {
       </div>
     </div>
   );
-}
+};
+export default ProductCard;

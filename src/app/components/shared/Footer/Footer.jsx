@@ -2,10 +2,17 @@
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import Logo from "../logo/Logo";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // --- DYNAMIC STYLING CLASSES ---
   const footerBgClass = isDark
@@ -20,7 +27,7 @@ export default function Footer() {
   const hoverTextClass = isDark
     ? "hover:text-accent-dark"
     : "hover:text-accent";
-  const borderColorClass = isDark ? "border-border-dark" : "border";
+  const borderColorClass = isDark ? "border-border-dark" : "border-border";
 
   const socialLinks = [
     { href: "https://github.com/ana-yet", icon: FaGithub },
@@ -35,18 +42,24 @@ export default function Footer() {
     { href: "/terms", label: "Terms of Service" },
   ];
 
+  if (!mounted) {
+    // Render a fallback to match server HTML
+    return (
+      <footer className="border-t bg-card-background border-border">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 text-sm text-text-secondary">
+          <Logo />
+          <p>Your one-stop shop for the latest and greatest in technology.</p>
+        </div>
+      </footer>
+    );
+  }
   return (
     <footer className={`border-t ${footerBgClass} ${borderColorClass}`}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Brand and Socials */}
           <div className="space-y-4">
-            <Link
-              href="/"
-              className={`text-2xl font-bold ${headingColorClass}`}
-            >
-              TechStore
-            </Link>
+            <Logo />
             <p className={`text-sm ${textColorClass}`}>
               Your one-stop shop for the latest and greatest in technology.
             </p>
