@@ -25,7 +25,6 @@ import {
 
 const ProductForm = () => {
   const { data: session } = useSession();
-  console.log(session);
   const [productData, setProductData] = useState({
     name: "",
     category: "",
@@ -65,7 +64,7 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission here
-    console.log("Product Data:", productData);
+    // console.log("Product Data:", productData);
     const payload = {
       ...productData,
       sellerName: session?.user?.name || "Admin",
