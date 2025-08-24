@@ -23,7 +23,7 @@ const AuthLayout = ({ children, title }) => {
   const textColorClass = isDark
     ? "text-text-primary-dark"
     : "text-text-primary";
-  const borderColorClass = isDark ? "border-border-dark" : "border";
+  const borderColorClass = isDark ? "border-border-dark" : "border-border";
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-12">
