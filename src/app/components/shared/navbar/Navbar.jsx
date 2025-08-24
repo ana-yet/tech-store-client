@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,6 +17,7 @@ import {
 import Logo from "../logo/Logo";
 import LoginUser from "./LoginUser";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   // --- STATE MANAGEMENT ---
@@ -25,6 +26,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const path = usePathname();
+  const { data: session } = useSession();
 
   // useEffect to ensure the component is mounted before rendering theme-dependent UI
   useEffect(() => setMounted(true), []);
@@ -66,15 +68,17 @@ const Navbar = () => {
   const navLinks = [
     { href: "/", label: "Home", icon: FiHome },
     { href: "/products", label: "Products", icon: FiBox },
-    { href: "/dashboard", label: "Dashboard", icon: FiPieChart },
   ];
+  if (session) {
+    navLinks.push({ href: "/dashboard", label: "Dashboard", icon: FiPieChart });
+  }
 
   // --- RENDER LOGIC ---
   if (!mounted) {
     return <div className="h-20 w-full" />;
   }
   if (path.includes("/dashboard")) {
-    return null; // Don't render Navbar on dashboard routes
+    return null;
   }
 
   return (
@@ -89,7 +93,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden items-center space-x-8 md:flex">
             {navLinks.map((link) => {
-              const Icon = link.icon;
+              const Icon = link?.icon;
               return (
                 <motion.div
                   key={link.href}
