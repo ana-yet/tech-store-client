@@ -1,4 +1,3 @@
-// app/products/[id]/page.js
 import React from "react";
 import Image from "next/image";
 

@@ -1,6 +1,6 @@
 export default async function getAllProducts() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/product`, {
-    next: { revalidate: 10 },
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch products");
